@@ -1,5 +1,4 @@
 const p5container = document.getElementById("p5container");
-
 addEventListener("DOMContentLoaded", () => {
     p5container.innerHTML = "";
 
