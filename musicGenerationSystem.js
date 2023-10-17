@@ -15,7 +15,6 @@ window.addEventListener('load', () => {
     mic = new Tone.UserMedia()
     mic.connect(analyser)
     mic.open()
-    // mic.toDestination()
 })
 
 function setup() {
@@ -23,7 +22,7 @@ function setup() {
     background(100)
     setInterval(setFrequencyText, 1000)
     setInterval(updateNote, 100)
-    setInterval(playMajorChord, 1500)
+    setInterval(playChord, 1500)
     frameRate(15)
     synth1 = new Tone.Synth().toDestination()
     synth2 = new Tone.Synth().toDestination()
@@ -58,6 +57,7 @@ function setFrequencyText() {
     frequencyText = frequency
 }
 
+//Code adapted from https://github.com/cwilso/PitchDetect/blob/main/js/pitchdetect.js
 function updateNote() {
     pitch = fft.getFrequencyOfIndex(highestVIndex)
     noteNumber = noteFromPitch()
@@ -79,18 +79,18 @@ var noteStrings = [
     'A#3',
     'B3',
 ]
-
+//Code adapted from https://github.com/cwilso/PitchDetect/blob/main/js/pitchdetect.js
 function noteFromPitch() {
     var noteNum = 12 * (log(pitch / 440) / log(2))
     return round(noteNum) + 69
 }
-
+//Code adapted from https://github.com/cwilso/PitchDetect/blob/main/js/pitchdetect.js
 function getNoteFromNoteNumber() {
     return noteStrings[noteNumber % 12]
 }
 
-function playMajorChord() {
-    const whichChord = floor(random(0, 3));
+function playChord() {
+    const whichChord = floor(random(0, 3))
     if (whichChord == 0) {
         const third = noteStrings[(noteStrings.indexOf(note) + 7) % 12]
         const fifth = noteStrings[(noteStrings.indexOf(note) + 4) % 12]
