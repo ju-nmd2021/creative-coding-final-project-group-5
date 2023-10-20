@@ -38,7 +38,7 @@ function draw() {
     for (let i = 0; i < value.length; i++) {
         v = map(value[i], -100, 0, height, 0)
         rect(i * 1, 0, 1, v) // waveform: * 100
-        if (v > highestV && v !== Infinity && v >= 0 && v < 2048 && v > 200) {
+        if (v > highestV && v !== Infinity && v >= 0 && v < 2048 && v > 300) {
             highestV = v
             highestVIndex = i
         }
